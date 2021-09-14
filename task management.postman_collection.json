@@ -6,25 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "get all tasks",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/tasks",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"tasks"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Create a task",
 			"request": {
 				"method": "POST",
@@ -44,6 +25,25 @@
 						}
 					]
 				},
+				"url": {
+					"raw": "http://localhost:3000/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:3000/tasks",
 					"protocol": "http",
@@ -93,6 +93,37 @@
 					"path": [
 						"tasks",
 						"8fdd3a46-3336-4847-adcd-26c851be7bff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a task status by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status",
+							"value": "IN_PROGRESS",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/tasks/801db8f1-f2d9-4f5b-ac6e-71f5bba24421/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"801db8f1-f2d9-4f5b-ac6e-71f5bba24421",
+						"status"
 					]
 				}
 			},

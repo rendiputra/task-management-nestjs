@@ -128,6 +128,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get task with filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tasks?status=OPEN&search=PKN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "OPEN"
+						},
+						{
+							"key": "search",
+							"value": "PKN"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

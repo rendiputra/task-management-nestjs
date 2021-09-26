@@ -1,81 +1,80 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task-.dto';
-import { Task, TaskStatus } from './task.model';
-import { v4 as uuid } from 'uuid';
+import { TaskStatus } from './task-status.enum';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 
 @Injectable()
 export class TasksService {
-    private tasks: Task[] = [];
 
-    getAllTasks(): Task[] {
-        return this.tasks;
-    }
 
-    getTaskById(id: string): Task {
-        // try to get task
+//     getAllTasks(): Task[] {
+//         return this.tasks;
+//     }
 
-        // if not found, throw an error '404 not found'
+//     getTaskById(id: string): Task {
+//         // try to get task
 
-        // otherwise, return the found task
+//         // if not found, throw an error '404 not found'
 
-        const found = this.tasks.find((task) => task.id === id);
+//         // otherwise, return the found task
 
-        if(!found) {
-            throw new NotFoundException(`Task with ID "${id}" not found`);
-        }
+//         const found = this.tasks.find((task) => task.id === id);
 
-        return found;
+//         if(!found) {
+//             throw new NotFoundException(`Task with ID "${id}" not found`);
+//         }
+
+//         return found;
         
-    }
+//     }
 
-    getTaskWithFilters(filterDto: GetTasksFilterDto): Task[] {
-        const { status, search } = filterDto;
+//     getTaskWithFilters(filterDto: GetTasksFilterDto): Task[] {
+//         const { status, search } = filterDto;
 
-        // membuat array sementara untuk menampung hasil
-        let tasks = this.getAllTasks();
+//         // membuat array sementara untuk menampung hasil
+//         let tasks = this.getAllTasks();
 
-        // melakukan sesuati dengan status
-        if(status) {
-            tasks = tasks.filter((task) => task.status === status);
-        }
-        // melakukan sesuatu dengan search
-        if(search) {
-            tasks = tasks.filter((task) => {
-                if (task.title.includes(search) || task.description.includes(search)) {
-                    return true;
-                }
+//         // melakukan sesuati dengan status
+//         if(status) {
+//             tasks = tasks.filter((task) => task.status === status);
+//         }
+//         // melakukan sesuatu dengan search
+//         if(search) {
+//             tasks = tasks.filter((task) => {
+//                 if (task.title.includes(search) || task.description.includes(search)) {
+//                     return true;
+//                 }
 
-                return false;
-            })
-        }
+//                 return false;
+//             })
+//         }
 
-        // mereturn hasil akhir
-        return tasks;
-    }
+//         // mereturn hasil akhir
+//         return tasks;
+//     }
 
-    createTask(createTaskDto: CreateTaskDto): Task {
-        const { title, description } = createTaskDto;
+//     createTask(createTaskDto: CreateTaskDto): Task {
+//         const { title, description } = createTaskDto;
 
-        const task: Task = {
-            id: uuid(),
-            title,
-            description,
-            status: TaskStatus.OPEN,
-        };
+//         const task: Task = {
+//             id: uuid(),
+//             title,
+//             description,
+//             status: TaskStatus.OPEN,
+//         };
 
-        this.tasks.push(task);
-        return task;
-    }
+//         this.tasks.push(task);
+//         return task;
+//     }
 
-    deleteTask(id: string): void {
-        const found = this.getTaskById(id);
-        this.tasks = this.tasks.filter((task) => task.id !== found.id);
-    }
+//     deleteTask(id: string): void {
+//         const found = this.getTaskById(id);
+//         this.tasks = this.tasks.filter((task) => task.id !== found.id);
+//     }
 
-    updateTaskStatus(id: string, status: TaskStatus) {
-        const task = this.getTaskById(id);
-        task.status = status;
-        return task;
-    }
+//     updateTaskStatus(id: string, status: TaskStatus) {
+//         const task = this.getTaskById(id);
+//         task.status = status;
+//         return task;
+//     }
 }

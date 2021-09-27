@@ -3,13 +3,19 @@ import { CreateTaskDto } from './dto/create-task-.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { TaskStatus } from './task-status.enum';
+import { Task } from './task.entity';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private tasksService: TasksService) {}
 
+  @Get(':id')
+  getTaskById(@Param('id') id: string): Promise<Task> {
+    return this.tasksService.getTaskById(id);
+  }
 
+  // latihan rest api tanpa database
 //   // http://localhost:3000/tasks/
 //   @Get()
 //   getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
@@ -23,6 +29,8 @@ export class TasksController {
 
 //     return this.tasksService.getAllTasks();
 //   }
+
+
 
 //   // http://localhost:3000/tasks/{:id}
 //   @Get('/:id')

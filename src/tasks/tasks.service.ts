@@ -24,6 +24,10 @@ export class TasksService {
         return found;
     }
 
+    createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+        return this.tasksRepository.createTask(createTaskDto);
+    }
+
 
     // latihan rest api tanpa database
 //     getAllTasks(): Task[] {

@@ -15,6 +15,11 @@ export class TasksController {
     return this.tasksService.getTaskById(id);
   }
 
+  @Post()
+  createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksService.createTask(createTaskDto);  
+  }
+
   // latihan rest api tanpa database
 //   // http://localhost:3000/tasks/
 //   @Get()

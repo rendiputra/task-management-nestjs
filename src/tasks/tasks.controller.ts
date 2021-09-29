@@ -20,6 +20,11 @@ export class TasksController {
     return this.tasksService.createTask(createTaskDto);  
   }
 
+  @Delete('/:id')
+  deleteTask(@Param('id') id: string): Promise<void>{
+    return this.tasksService.deleteTask(id);
+  }
+
   // latihan rest api tanpa database
 //   // http://localhost:3000/tasks/
 //   @Get()

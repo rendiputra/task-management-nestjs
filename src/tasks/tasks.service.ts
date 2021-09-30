@@ -35,6 +35,15 @@ export class TasksService {
         }
     }
 
+    async updateTaskStatus(id: string, status: TaskStatus): Promise<Task>{
+        const task = await this.getTaskById(id);
+        
+        task.status = status;
+        await this.tasksRepository.save(task);
+
+        return task;
+    }
+
 
     // latihan rest api tanpa database
 //     getAllTasks(): Task[] {

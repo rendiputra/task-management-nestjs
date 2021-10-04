@@ -64,7 +64,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/tasks/0020fffc-3c8f-49d3-b563-059ee99bb418",
+					"raw": "http://localhost:3000/tasks/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,7 +72,13 @@
 					"port": "3000",
 					"path": [
 						"tasks",
-						"0020fffc-3c8f-49d3-b563-059ee99bb418"
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
 					]
 				}
 			},
@@ -84,7 +90,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/tasks/8fdd3a46-3336-4847-adcd-26c851be7bff",
+					"raw": "http://localhost:3000/tasks/:id",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -92,7 +98,13 @@
 					"port": "3000",
 					"path": [
 						"tasks",
-						"8fdd3a46-3336-4847-adcd-26c851be7bff"
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
 					]
 				}
 			},
@@ -114,7 +126,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/tasks/801db8f1-f2d9-4f5b-ac6e-71f5bba24421/status",
+					"raw": "http://localhost:3000/tasks/:id/status",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -122,8 +134,14 @@
 					"port": "3000",
 					"path": [
 						"tasks",
-						"801db8f1-f2d9-4f5b-ac6e-71f5bba24421",
+						":id",
 						"status"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
 					]
 				}
 			},

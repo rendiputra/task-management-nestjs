@@ -31,8 +31,17 @@
 ```bash
 $ npm install
 ```
+create Postgres SQL on docker
+```bash
+docker run --name postgres-nest -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+```
 
 ## Running the app
+
+run container docker
+```bash
+docker start postgres-nest
+```
 
 ```bash
 # development
@@ -43,11 +52,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-run Postgres SQL on docker
-```bash
-docker run --name postgres-nest -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 ```
 
 ## Test

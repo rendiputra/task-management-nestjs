@@ -186,12 +186,12 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "admin1",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "Admin123_",
 							"type": "text"
 						}
 					]
@@ -206,6 +206,41 @@
 					"path": [
 						"auth",
 						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin123_",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"signin"
 					]
 				}
 			},

@@ -8,6 +8,16 @@
 		{
 			"name": "Create a task",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTYzMzYzODg0MiwiZXhwIjoxNjMzNjQyNDQyfQ.FzJBiKhSBQEu-PM_3izvCJZuG4u18cuaBzNpwOr1eBk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -15,12 +25,12 @@
 					"urlencoded": [
 						{
 							"key": "title",
-							"value": "Mengerjakan tugas kalkulus",
+							"value": "Mengerjakan tugas PBO",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "Mengumpulkan melalui LMS",
+							"value": "Mengumpulkan melalui WA",
 							"type": "text"
 						}
 					]
@@ -42,6 +52,16 @@
 		{
 			"name": "get all tasks",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTYzMzYzOTcxMSwiZXhwIjoxNjMzNjQzMzExfQ._6JFN89WqpRYEUiK5twKvok3F4F6vySHbhB63Vtj_As",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -61,6 +81,16 @@
 		{
 			"name": "Get Task By Id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTYzMzYzOTcxMSwiZXhwIjoxNjMzNjQzMzExfQ._6JFN89WqpRYEUiK5twKvok3F4F6vySHbhB63Vtj_As",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -87,6 +117,16 @@
 		{
 			"name": "Delete a task by ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTYzMzYzOTcxMSwiZXhwIjoxNjMzNjQzMzExfQ._6JFN89WqpRYEUiK5twKvok3F4F6vySHbhB63Vtj_As",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
@@ -113,6 +153,16 @@
 		{
 			"name": "Update a task status by ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlhdCI6MTYzMzYzOTcxMSwiZXhwIjoxNjMzNjQzMzExfQ._6JFN89WqpRYEUiK5twKvok3F4F6vySHbhB63Vtj_As",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PATCH",
 				"header": [],
 				"body": {

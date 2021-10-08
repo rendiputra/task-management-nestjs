@@ -1,3 +1,4 @@
+import { InternalServerErrorException, Logger } from "@nestjs/common";
 import { User } from "src/auth/user.entity";
 import { Brackets, EntityRepository, Repository } from "typeorm";
 import { CreateTaskDto } from "./dto/create-task-.dto";
@@ -7,6 +8,7 @@ import { Task } from "./task.entity";
 
 @EntityRepository(Task)
 export class TasksRepository extends Repository<Task> {
+    private logger = new Logger('TasksRepository');
 
     // Menggunakan query builder
     async getTasks(filterDto: GetTasksFilterDto, user: User): Promise<Task[]> {
@@ -15,7 +17,7 @@ export class TasksRepository extends Repository<Task> {
         query.where({ user });
 
         if (status) {
-            query.andWhere('status = :status', { status });
+            query.andWhere('task.status = :status', { status });
         }
 
         if (search) {
@@ -27,9 +29,15 @@ export class TasksRepository extends Repository<Task> {
                 }),
             );
         }
+
+        try {
+            const tasks = await query.getMany();
+            return tasks;
+        } catch (error) {
+            this.logger.error(`Gagal mengambil data tasks pengguna ${user.username}. Filters: ${JSON.stringify(filterDto)}`, error.stack)
+            throw new InternalServerErrorException();
+        }
         
-        const tasks = await query.getMany();
-        return tasks;
     }
 
     async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
@@ -42,7 +50,12 @@ export class TasksRepository extends Repository<Task> {
             user,
         });
 
-        await this.save(task);
-        return task;
+        try {
+            await this.save(task);
+            return task;
+        } catch (error) {
+            this.logger.error(`Gagal menyimpan data task pada pengguna  ${user.username}. Data: ${JSON.stringify(createTaskDto)}`, error.stack)
+            throw new InternalServerErrorException();
+        }
     }
 }

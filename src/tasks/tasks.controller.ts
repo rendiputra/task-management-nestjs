@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { throws } from 'assert';
 import { GetUser } from 'src/auth/get-user.decorator';
@@ -13,6 +13,7 @@ import { TasksService } from './tasks.service';
 @Controller('tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
+  private logger = new Logger(`TaskController`);
   constructor(private tasksService: TasksService) {}
 
   @Get()
@@ -20,6 +21,7 @@ export class TasksController {
     @Query() filterDto: GetTasksFilterDto, 
     @GetUser() user: User
   ): Promise<Task[]> {
+    this.logger.verbose(`User "${user.username}" mencoba mengambil informasi data tasks. Filters: ${JSON.stringify(filterDto)}`);
     return this.tasksService.getTasks(filterDto, user);
   }
 
@@ -33,12 +35,14 @@ export class TasksController {
   createTask(
     @Body() createTaskDto: CreateTaskDto,
     @GetUser() user: User,    
-    ): Promise<Task> {
+  ): Promise<Task> {
+    this.logger.verbose(`User "${user.username}" membuat task baru. Data: ${JSON.stringify(createTaskDto)}`);
     return this.tasksService.createTask(createTaskDto, user);  
   }
 
   @Delete('/:id')
   deleteTask(@Param('id') id: string, @GetUser() user: User): Promise<void>{
+    this.logger.verbose(`menghapus data task User "${user.username}". Data: ${id}`);
     return this.tasksService.deleteTask(id, user);
   }
 
@@ -49,6 +53,7 @@ export class TasksController {
     @GetUser() user: User,
   ): Promise<Task> {
     const { status } = updateTaskStatusDto;
+    this.logger.verbose(`Mengupdate data task User "${user.username}". Data: ${JSON.stringify(updateTaskStatusDto)}`);
     return this.tasksService.updateTaskStatus(id, status, user);
   }
 
